@@ -1,0 +1,33 @@
+
+#include<stdio.h>
+int main()
+{
+    int t;
+    char s[160];
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%s",s);
+        int su=0,s1=0;
+        for(int i=0;s[i];i++)
+        {
+            if(s[i]=='S')
+            {
+                if(s[i+1]=='U'&& s[i+2]=='V'&&s[i+3]=='O'&&s[i+4]=='J'&&s[i+5]=='I'&&s[i+6]=='T')
+                 su++;
+                else
+                {
+                    if(s[i+1]=='U'&& s[i+2]=='V'&&s[i+3]=='O')
+                    {
+                        s1++;
+
+
+                    }
+
+                }
+            }
+        }
+    printf("SUVO = %d, SUVOJIT = %d\n",s1,su);
+    }
+    return 0;
+}
