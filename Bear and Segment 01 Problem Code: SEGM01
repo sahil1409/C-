@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	string s;
+	int T, i, count = 0, c = 0, o = 0, n;
+	cin >> T;
+	while(T--) {
+	    count = 0, c = 0, o = 0;
+	    cin >> s;
+	    n = s.size();
+	    for(i = 0; i < n-1; i++) {
+	        if((s[i] == '0' && s[i + 1] == '1') || (s[i] == '1' && s[i + 1] == '0')) {
+	            count++;
+	        }
+	        if(s[i] == '1') {
+	            c++;
+	        }
+	        if(s[i] == '0') {
+	            o++;
+	        }
+	    }
+	        
+	    if(s[n-1] == '1') {
+	            c++;
+	    } else {
+	            o++;
+	    }
+	        
+	    if((count > 2) || (s[0] == '1' && s[n-1] == '1' && o != 0) || (o == n)) {
+	            cout << "NO" << endl;
+	    } else {
+	            cout << "YES" << endl;
+	    }
+	}
+	return 0;
+}
+
+
+
+////////////////////////OR
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+void solve(){
+	string s;
+	cin>>s;
+	int n=s.length();
+	vector<int> v;
+	for(int i=0;i<n;i++)
+	{
+		if(s[i]== '1')
+		v.push_back(i);
+	}
+	if(v.empty()){
+		cout<<"NO"<<endl;
+		return;
+	}
+	
+	for(int i=0;i<v.size()-1;i++)
+	{
+		if(v[i+1]!=v[i]+1)
+		{
+			cout<<"NO"<<endl;
+			return ;
+		}
+	}
+	cout<<"YES"<<endl;
+	return;
+  
+}
+int main(){
+	int tc;
+    cin>>tc;
+    while(tc--)
+    {
+        solve();
+        cout<<endl;
+    }
+}
