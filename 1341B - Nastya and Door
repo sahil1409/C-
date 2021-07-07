@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, k;
+        cin >> n >> k;
+        int a[n];
+        for(int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        
+        int ind;
+        int peak = 0, maxi = 0;
+        for(int i = 1; i <= k - 2; i++) {
+            if(a[i] > a[i - 1] && a[i] > a[i + 1]) {
+                peak++;
+            }
+            if(peak > maxi) {
+                maxi = peak;
+            }
+        }
+        
+        int l = 0;
+        int r = k - 1;
+        ind = 0;
+        while(r < n - 1) {
+            if(a[r] > a[r - 1] && a[r] > a[r + 1]) {
+                peak++;
+            }
+            r++;
+            l++;
+            if(a[l] > a[l - 1] && a[l] > a[l + 1]) {
+                peak--;
+            }
+            if(peak > maxi) {
+                maxi = peak;
+                ind = l;
+            }
+        }
+        
+        cout << maxi + 1 << " " << ind + 1 << endl;
+    }
+}
