@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void solve() {
+	int n, c;
+	cin >> n >> c;
+	int a[n];
+	for(int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	sort(a, a + n);
+	int low = 1, high = a[n - 1] - a[0];
+	while(low <= high) {
+		int mid = low + (high - low) / 2;
+		int lastCowPlacedAt = a[0];
+		int cowsPlaced = 1;
+		for(int i = 0; i < n; i++) {
+			if(a[i] - lastCowPlacedAt >= mid) {
+				cowsPlaced++;
+				lastCowPlacedAt = a[i];
+			}
+			if(cowsPlaced == c) {
+				break;
+			}
+		}
+		if(cowsPlaced == c) {
+			low = mid + 1;
+		}
+		else {
+			high = mid - 1;
+		}
+	}
+	cout << high << endl;
+}
+
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--) {
+		solve();
+	}
+	return 0;
+}
