@@ -1,0 +1,44 @@
+/**
+ * @input A : Integer
+ * @input B : Integer
+ * @input C : Integer array
+ * @input n3 : Integer array's ( C ) length
+ * 
+ * @Output Integer
+ */
+
+int numberOfPainters (int A, int limit, vector<int> &C) {
+    int painters = 1;
+    long long sum = 0;
+    for(int i = 0; i < C.size(); i++) {
+        sum += C[i];
+        if(sum > limit) {
+            sum = C[i];
+            painters++;
+        }
+    }
+    return painters;
+}
+
+int Solution::paint(int A, int B, vector<int> &C) {
+    long long sum = 0;
+    int maxi = -1;
+    for(int i = 0; i < C.size(); i++) {
+        maxi = max(C[i], maxi);
+        sum += C[i];
+    }
+
+    long long low = maxi;
+    long long high = sum;
+    while(low < high) {
+        long long mid = low + (high - low) / 2;
+        int painters = numberOfPainters(A, mid, C);
+        if(painters <= A) {
+            high = mid;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    return (low * B) % 10000003;
+}
