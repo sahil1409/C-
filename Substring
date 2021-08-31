@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int flag = 0;
+    int n;
+    cin >> n;
+	vector<string> names;
+	for(int i = 0; i < n; i++) {
+	    string str;
+	    cin >> str;
+	    names.push_back(str);
+	}
+	string str1;
+	cin >> str1;
+	for(int i = 0; i < names.size(); i++) {
+	    if(names[i].find(str1) != string::npos) {
+	        flag = 1;
+	        cout << names[i] << endl;
+	    }
+	}
+	if(flag == 0) {
+	    cout << "Substring doesn't exists in the main string";
+	}
+	return 0;
+}
