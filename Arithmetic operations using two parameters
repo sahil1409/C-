@@ -1,0 +1,63 @@
+//Proper code 
+
+#include <iostream>
+using namespace std;
+
+struct arith{
+    int add, sub, mul, divi;
+};
+
+typedef struct arith Struct;
+
+Struct myfunc(int a, int b){
+    Struct s;
+    
+    s.add = a + b;
+    s.sub = a - b;
+    s.mul = a * b;
+    s.divi = a / b;
+    
+    return s;
+}
+
+int main() {
+	int a, b;
+	Struct res;
+	cin >> a >> b;
+	res = myfunc(a, b);
+	cout << "Addition = " << res.add << "\nSubtraction = " << res.sub << "\nMultiplication = " << res.mul << "\nDivision = " << res.divi;
+	return 0;
+}
+
+
+
+//Can try using vector but parameter passed is a vector which is technically two parameters
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void myfunc(vector<int> &s) {
+    int add = s[0] + s[1];
+    s.push_back(add);
+    
+    int sub = s[0] - s[1];
+    s.push_back(sub);
+    
+    int mul = s[0] * s[1];
+    s.push_back(mul);
+    
+    int divi = s[0] / s[1];
+    s.push_back(divi);
+}
+
+int main() {
+	int a, b;
+	cin >> a >> b;
+	vector<int> v {a, b};
+    myfunc(v);
+    for(int i = 2; i < v.size(); i++) {
+        cout << v[i] << endl;
+    }
+	//cout << res << endl;
+	return 0;
+}
