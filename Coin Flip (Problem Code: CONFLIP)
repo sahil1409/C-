@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--) {
+	    int g;
+	    cin >> g;
+	    while(g--) {
+	        int i, n, q;
+	        cin >> i >> n >> q;
+	        int heads, tails;
+	        
+	        if(n % 2 == 0) {
+	            heads = n / 2;
+	            tails = n / 2;
+	        }
+	        else {
+	            if(i == 1) {
+	                heads = n / 2;
+	                tails = heads + 1;
+	            }
+	            else {
+	                tails = n / 2;
+	                heads = tails + 1;
+	            }
+	        }
+	        
+	        if(q == 1) cout << heads << endl;
+	        else cout << tails << endl;
+	    }
+	}
+	return 0;
+}
